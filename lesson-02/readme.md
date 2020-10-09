@@ -10,7 +10,7 @@ or
 #### The Url that are Used
 
 - "/"
-- "/students/< enter any number or value>"
+- "/students/< enter any number or value >"
 - "/school/< enter one subject >-< enter another subject >"
 - "/teacher/abcd< enter any data > wxyz"
 
