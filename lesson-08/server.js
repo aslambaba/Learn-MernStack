@@ -72,6 +72,38 @@ app.get('/delete/:id', (req,res3)=>{
         }
     });
 })
+app.get('/update/:id', (req,res4)=>{
+    update_student_id = req.params.id;
+    studentSchema.findById(update_student_id, (match_failed,matched)=>{
+        if(match_failed){
+            throw match_failed
+        }
+        else{
+            console.log(matched);
+            res4.render('update',{updaterecord: matched})
+        }
+    })
+})
+app.post('/update/:id', (req,res5)=>{
+    update_student_id = req.params.id;
+    studentSchema.replaceOne(
+        { "_id" : update_student_id, "firstName" : req.body.firstName,
+         "lastName" : req.body.lastName,
+        "fatherName": req.body.fatherName,
+        "email": req.body.email,
+        },
+        (update_failed,update_successfull)=>{
+            if(update_failed){
+                throw update_failed
+            }else{
+                console.log('Update Done !');
+                res5.redirect('/');
+            }
+        }
+    )
+    
+
+})
 app.listen(port,()=>{
     console.log('Server is running on '+ port);
 })
