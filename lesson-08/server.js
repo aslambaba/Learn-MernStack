@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const port = 6007;
+const port = 6008;
 
 let studentSchema = require('./models/students.model');
 let studee = studentSchema.find({});
@@ -52,6 +52,25 @@ app.post('/', (req,res2)=>{
         }
     });
     
+})
+app.get('/delete/:id', (req,res3)=>{
+    delete_student_id = req.params.id;
+    studentSchema.deleteOne({_id: delete_student_id}, (delete_failed,deleted)=>{
+        if(delete_failed){
+            throw delete_failed
+        }
+        else{
+            console.log('delete !!');
+            studee.exec((error,data)=>{
+                if(error){
+                    throw error;
+                }
+                else{
+                    res3.redirect('/');
+                }
+            });
+        }
+    });
 })
 app.listen(port,()=>{
     console.log('Server is running on '+ port);

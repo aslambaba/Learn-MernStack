@@ -60,6 +60,8 @@
               <td><%= studentdata.firstName +" "+ studentdata.lastName%></td>
               <td><%= studentdata.fatherName%></td>
               <td><%= studentdata.email%></td>
+              <% st = '/delete/'+studentdata._id %>
+              <td><a href=<%= st %>><button class="deleteBtn">Delete</button></a></td>
             </tr>
           <%})%>
         </tbody>
