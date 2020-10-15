@@ -6,6 +6,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="css/home.style.css">
 
+
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -20,7 +21,7 @@
           <div class="row">
             <div class="input-field col s6">
                 <input id="first_name" type="text" class="validate" name="firstName">
-                <label for="last_name">First Name</label>
+                <label for="first_name">First Name</label>
               </div>
             <div class="input-field col s6">
               <input id="last_name" type="text" class="validate" name="lastName">
@@ -54,11 +55,14 @@
         </thead>
 
         <tbody>
-          <tr>
-            <td><%= records.firstName %></td>
-            <td><%= records.fatherName %></td>
-            <td><%= records.email %></td>
-          </tr>
+          <% records.forEach((studentdata)=>{%>
+            <tr>
+              <td><%= studentdata.firstName +" "+ studentdata.lastName%></td>
+              <td><%= studentdata.fatherName%></td>
+              <td><%= studentdata.email%></td>
+              <td><a href='/delete/id'><button>Delete</button></a></td>
+            </tr>
+          <%})%>
         </tbody>
       </table>
 </body>
